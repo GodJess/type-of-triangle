@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="{% static "main/zadanie.css" %}">
+  </head>
+  <body>
+    <div class="block">
+        <div class="text">
+            <p>Программа по вычислению типа треугольника </p>
+        </div>
+        <div class="blockan">
+        {% if not text %}
+        <form  class="form" method="post">
+          {% csrf_token %} 
+          <div class="block-input">
+            <input class="storona" type="text" name="A" value="" placeholder="Введите сторону 1">
+            <input class="storona" type="text" name="B" value="" placeholder="Введите сторону 2">
+            <input class="storona" type="text" name="C" value="" placeholder="Введите сторону 3">
+          </div>
+          <div class="block-button">
+            <button class="button" type="submit" name="button">Рассчитать</button>
+          </div>
+        </form>
+        {% else %}
+        <div class="text-answear">
+          <p>{{text}}</p>
+      </div>
+       <div class="block-button">
+        <a class="a" href="{% url 'zadanie' %}">Вернуться<a>
+        </div>
+        {% endif %}
+        </div>
+      </div>
+  </body>
+</html>
